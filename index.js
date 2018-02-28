@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send({ hi: "there" });
+  res.send({ test: "heroku" });
 });
 
 // uses Heroku's port if it exists, otherwise 5000
