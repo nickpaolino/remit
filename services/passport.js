@@ -37,7 +37,8 @@ passport.use(
         } else {
           // otherwise, we need to create a user record with the profile ID
           new User({
-            googleId: profile.id
+            googleId: profile.id,
+            name: profile.displayName
           })
             .save()
             .then(user => done(null, user));

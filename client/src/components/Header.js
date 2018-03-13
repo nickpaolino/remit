@@ -9,6 +9,9 @@ class Header extends React.Component {
       case null:
         return (
           <div style={{ visibility: "hidden" }}>
+            <div>
+              <a>Hi...</a>
+            </div>
             <a>Thinking...</a>
           </div>
         );
@@ -19,8 +22,12 @@ class Header extends React.Component {
           </div>
         );
       default:
+        console.log(this.props.auth.name);
         return (
           <div>
+            <div>
+              <a>Hi, {this.props.auth.name}</a>
+            </div>
             <a href="/api/logout">Logout</a>
           </div>
         );
