@@ -7,18 +7,22 @@ class Header extends React.Component {
   renderContent = () => {
     switch (this.props.auth) {
       case null:
-        return;
+        return (
+          <div style={{ visibility: "hidden" }}>
+            <a>Thinking...</a>
+          </div>
+        );
       case false:
         return (
-          <li>
+          <div className="login">
             <a href="/auth/google">Login with Google</a>
-          </li>
+          </div>
         );
       default:
         return (
-          <li>
+          <div>
             <a href="/api/logout">Logout</a>
-          </li>
+          </div>
         );
     }
   };
@@ -26,9 +30,13 @@ class Header extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div className="header">
-        <Link to="/">Remit</Link>
-        {this.renderContent()}
+      <div className="text-box">
+        <div className="header">
+          <Link className="logo" to="/">
+            Remit
+          </Link>
+          {this.renderContent()}
+        </div>
       </div>
     );
   }

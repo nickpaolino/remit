@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Aldrich");
+
 * {
   margin: 0;
   padding: 0;
@@ -6,17 +8,37 @@
 }
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Aldrich", sans-serif;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 24px;
   line-height: 1.7;
   color: #777;
   /* puts a padding around the entire border of the body */
-  padding: 30px;
+  padding: 40px;
+  text-decoration: none;
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* this transforms where on the div the top and left is centered */
+  /* it will be shifted up 50% of the element's height */
+  transform: translate(-50%, -50%);
+
+  /* this is used to center the button (also centers the h1 element) */
+  text-align: center;
 }
 
 .header {
   font-size: 1.5em;
+  letter-spacing: 2px;
+}
+
+.header a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgba(50, 50, 120, 0.8);
 }
 
 .landing {
