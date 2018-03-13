@@ -1,9 +1,11 @@
 import React from "react";
 
+import Header from "./Header";
+
 const Landing = () => {
   return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Remit</h1>
+    <div className="landing">
+      <Header />
     </div>
   );
 };

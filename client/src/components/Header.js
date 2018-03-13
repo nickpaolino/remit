@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import "../App.css";
 
 class Header extends React.Component {
   renderContent = () => {
@@ -25,8 +26,8 @@ class Header extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div>
-        <Link to={this.props.auth ? "/surveys" : "/"}>Remit</Link>
+      <div className="header">
+        <Link to="/">Remit</Link>
         {this.renderContent()}
       </div>
     );

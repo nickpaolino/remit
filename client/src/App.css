@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  /* changes the box model so that border and padding is no longer added to total width/height we specify */
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: #777;
+  /* puts a padding around the entire border of the body */
+  padding: 30px;
+}
+
+.header {
+  font-size: 1.5em;
+}
+
+.landing {
+  /* height should be 95% of the viewport */
+  height: 95vh;
+  background-image: linear-gradient(
+    to right bottom,
+    rgba(126, 140, 111, 0.8),
+    rgba(40, 120, 131, 0.8)
+  );
+  background-size: cover;
+  background-position: top;
+  position: relative;
+
+  /* a triangle would be: polygon(50% 0, 100% 100%, 0 100%) */
+}
