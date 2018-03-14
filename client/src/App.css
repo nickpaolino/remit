@@ -28,7 +28,8 @@ body {
 }
 
 .app a,
-p {
+p,
+input {
   color: rgba(50, 50, 120, 0.8);
   text-decoration: none;
   /* text-transform: uppercase; */
@@ -76,9 +77,26 @@ p {
 }
 
 .landing p,
-a {
+a,
+input {
   position: relative;
   top: 20%;
+}
+
+input {
+  margin-top: 10px;
+  font-family: "Aldrich", sans-serif;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+input::placeholder {
+  color: rgba(50, 50, 120, 0.8);
+  opacity: 0.5;
+  font-size: 0.9em;
+  text-align: left;
+  letter-spacing: 2px;
 }
 
 .btn:link,

@@ -5,9 +5,9 @@ class LandingContainer extends React.Component {
   render() {
     return (
       <div className="landing">
-        <p className="message">When I Send This</p>
+        <input className="message" placeholder="When I Send This" />
         <br />
-        <p className="message">Respond With This</p>
+        <input className="message" placeholder="Respond With This" />
         <br />
         <a href="#" className="btn">
           Configure
