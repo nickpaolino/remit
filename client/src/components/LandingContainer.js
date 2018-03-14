@@ -9,7 +9,7 @@ class LandingContainer extends React.Component {
         <br />
         <p className="message">Respond With This</p>
         <br />
-        <a href="#" className="btn btn-white btn-animated">
+        <a href="#" className="btn">
           Configure
         </a>
       </div>
