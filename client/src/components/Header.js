@@ -28,15 +28,13 @@ class Header extends React.Component {
   render() {
     console.log(this.props);
     return (
-      <div className="text-box">
-        <div className="header">
-          <div className="header-left">
-            <Link className="logo" to="/">
-              Remit
-            </Link>
-          </div>
-          <div className="header-right">{this.renderContent()}</div>
+      <div className="header">
+        <div className="header-left">
+          <Link className="logo" to="/">
+            Remit
+          </Link>
         </div>
+        <div className="header-right">{this.renderContent()}</div>
       </div>
     );
   }

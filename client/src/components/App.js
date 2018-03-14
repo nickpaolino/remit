@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 import Header from "./Header";
+import LandingContainer from "./LandingContainer";
 
 class App extends React.Component {
   componentDidMount() {
@@ -18,6 +19,7 @@ class App extends React.Component {
         <BrowserRouter>
           <div className="app">
             <Header />
+            <LandingContainer />
           </div>
         </BrowserRouter>
       </div>

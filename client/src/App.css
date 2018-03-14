@@ -27,22 +27,18 @@ body {
   );
 }
 
-.text-box {
-  position: relative;
-  display: inline-block;
-  display: flex;
-}
-
 .header {
+  position: relative;
+  display: flex;
   height: 100%;
   width: 100%;
   font-size: 1.5em;
   letter-spacing: 2px;
   padding-top: 10px;
+  display: inline;
 }
 
-.header a,
-p {
+.header a {
   text-decoration: none;
   text-transform: uppercase;
   color: rgba(50, 50, 120, 0.8);
@@ -51,14 +47,25 @@ p {
 }
 
 .header-left {
-  display: inline;
   float: left;
   padding-left: 20px;
 }
 
 .header-right {
   float: right;
-  display: inline;
   text-align: right;
   padding-right: 20px;
+}
+
+.landing {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  /* makes up 60% of app, the parent div */
+  height: 60%;
+  width: 60%;
+
+  /* it will be shifted up 50% of the element's height */
+  transform: translate(-50%, -50%);
 }
