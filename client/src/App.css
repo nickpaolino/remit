@@ -99,8 +99,7 @@ input::placeholder {
   letter-spacing: 2px;
 }
 
-.btn:link,
-.btn:visited {
+.btn {
   margin-top: 10px;
   font-size: 0.75em;
   text-transform: uppercase;

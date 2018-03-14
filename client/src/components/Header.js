@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "../App.css";
 
-class Header extends React.Component {
+class Header extends Component {
   renderContent = () => {
     switch (this.props.auth) {
       case null:
@@ -11,7 +11,6 @@ class Header extends React.Component {
       case false:
         return <a href="/auth/google">Login with Google</a>;
       default:
-        console.log(this.props.auth.name);
         return (
           <div>
             <div>
@@ -26,7 +25,6 @@ class Header extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="header">
         <div className="header-left">

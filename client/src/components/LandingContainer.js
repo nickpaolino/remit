@@ -1,7 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 import "../App.css";
 
-class LandingContainer extends React.Component {
+class LandingContainer extends Component {
+  state = {
+    configured: false
+  };
+
+  handleClick = () => {
+    this.setState({
+      configured: !this.state.configured
+    });
+  };
+
   render() {
     return (
       <div className="landing">
@@ -9,9 +19,9 @@ class LandingContainer extends React.Component {
         <br />
         <input className="message" placeholder="Respond With This" />
         <br />
-        <a href="#" className="btn">
+        <p className="btn" onClick={this.handleClick}>
           Configure
-        </a>
+        </p>
       </div>
     );
   }

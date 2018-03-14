@@ -9,7 +9,6 @@ import LandingContainer from "./LandingContainer";
 
 class App extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.fetchUser();
   }
 
