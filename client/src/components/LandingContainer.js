@@ -3,7 +3,9 @@ import "../App.css";
 
 class LandingContainer extends Component {
   state = {
-    configured: false
+    configured: false,
+    toMessage: "",
+    fromMessage: ""
   };
 
   handleClick = () => {
@@ -12,15 +14,39 @@ class LandingContainer extends Component {
     });
   };
 
+  handleChange = ({ target }) => {
+    const { value, name } = target;
+
+    this.setState({ [name]: value });
+  };
+
   render() {
     return (
       <div className="landing">
-        <input className="message" placeholder="When I Send This" />
+        {this.state.configured ? (
+          <p>{this.state.toMessage}</p>
+        ) : (
+          <input
+            className="message"
+            name="toMessage"
+            placeholder="When I Send This"
+            onChange={this.handleChange}
+          />
+        )}
         <br />
-        <input className="message" placeholder="Respond With This" />
+        {this.state.configured ? (
+          <p>{this.state.fromMessage}</p>
+        ) : (
+          <input
+            className="message"
+            name="fromMessage"
+            placeholder="Respond With This"
+            onChange={this.handleChange}
+          />
+        )}
         <br />
         <p className="btn" onClick={this.handleClick}>
-          Configure
+          {this.state.configured ? "Create New Command" : "Configure"}
         </p>
       </div>
     );
