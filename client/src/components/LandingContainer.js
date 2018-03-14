@@ -9,9 +9,20 @@ class LandingContainer extends Component {
   };
 
   handleClick = () => {
-    this.setState({
-      configured: !this.state.configured
-    });
+    let body;
+
+    if (this.state.configured) {
+      body = { toMessage: "", fromMessage: "" };
+    } else {
+      body = {};
+    }
+
+    if (this.state.toMessage.length && this.state.fromMessage.length) {
+      this.setState({
+        configured: !this.state.configured,
+        ...body
+      });
+    }
   };
 
   handleChange = ({ target }) => {
