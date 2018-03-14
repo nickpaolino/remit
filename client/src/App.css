@@ -9,49 +9,56 @@
 
 body {
   font-family: "Aldrich", sans-serif;
-  font-weight: 400;
   font-size: 24px;
   line-height: 1.7;
-  color: #777;
   /* puts a padding around the entire border of the body */
   padding: 40px;
-  text-decoration: none;
 }
 
-.text-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  /* this transforms where on the div the top and left is centered */
-  /* it will be shifted up 50% of the element's height */
-  transform: translate(-50%, -50%);
-
-  /* this is used to center the button (also centers the h1 element) */
-  text-align: center;
-}
-
-.header {
-  font-size: 1.5em;
-  letter-spacing: 2px;
-}
-
-.header a {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: rgba(50, 50, 120, 0.8);
-}
-
-.landing {
+.app {
   /* height should be 95% of the viewport */
-  height: 95vh;
+  height: 90vh;
+
+  /* creates the gradient background of the box */
   background-image: linear-gradient(
     to right bottom,
     rgba(126, 140, 111, 0.8),
     rgba(40, 120, 131, 0.8)
   );
-  background-size: cover;
-  background-position: top;
-  position: relative;
+}
 
-  /* a triangle would be: polygon(50% 0, 100% 100%, 0 100%) */
+.text-box {
+  position: relative;
+  display: inline-block;
+  display: flex;
+}
+
+.header {
+  height: 100%;
+  width: 100%;
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  padding-top: 10px;
+}
+
+.header a,
+p {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgba(50, 50, 120, 0.8);
+  /* creates shadow effect on links */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
+  display: inline;
+  float: left;
+  padding-left: 20px;
+}
+
+.header-right {
+  float: right;
+  display: inline;
+  text-align: right;
+  padding-right: 20px;
 }

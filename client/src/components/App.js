@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
-import Landing from "./Landing";
+import Header from "./Header";
 
 class App extends React.Component {
   componentDidMount() {
@@ -16,8 +16,8 @@ class App extends React.Component {
     return (
       <div>
         <BrowserRouter>
-          <div>
-            <Route exact path="/" component={Landing} />
+          <div className="app">
+            <Header />
           </div>
         </BrowserRouter>
       </div>
