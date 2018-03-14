@@ -27,23 +27,26 @@ body {
   );
 }
 
+.app a,
+p {
+  color: rgba(50, 50, 120, 0.8);
+  text-decoration: none;
+  /* text-transform: uppercase; */
+
+  /* creates shadow effect on links */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  font-size: 1.5em;
+  letter-spacing: 2px;
+  display: inline;
+}
+
 .header {
   position: relative;
   display: flex;
   height: 100%;
   width: 100%;
-  font-size: 1.5em;
-  letter-spacing: 2px;
   padding-top: 10px;
   display: inline;
-}
-
-.header a {
-  text-decoration: none;
-  text-transform: uppercase;
-  color: rgba(50, 50, 120, 0.8);
-  /* creates shadow effect on links */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .header-left {
@@ -66,6 +69,99 @@ body {
   height: 60%;
   width: 60%;
 
+  text-align: center;
+
   /* it will be shifted up 50% of the element's height */
   transform: translate(-50%, -50%);
+}
+
+.landing p,
+a {
+  position: relative;
+  top: 20%;
+}
+
+.btn:link,
+.btn:visited {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  /* top right bottom left */
+  /* padding: 15px 40px 15px 40px; */
+
+  /* top/bottom left/right */
+  padding: 10px 30px;
+
+  /* we should always use this line if we want to give paddings or heights or widths to elements */
+  display: inline-block;
+
+  /* this gives the button its rounded edges */
+  border-radius: 100px;
+
+  /* specifies for all the properties to be transitioned */
+  transition: all 0.2s;
+
+  /* this makes the button's pseudo-element follow this element */
+  position: relative;
+}
+
+.btn:hover {
+  /* when we hover over the button it moves up */
+  transform: translateY(-3px);
+
+  /* direction of the shadow in the x direction, y direction, blur, color of shadow (transparent) */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  /* moves down again when the button is clicked */
+  transform: translateY(-1px);
+
+  /* when we click on the button we want the shadow to be smaller */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: #fff;
+  color: #777;
+}
+
+/* we create a pseudo-element, which is essentially treated like a child element */
+/* we have to specify a content and display property */
+.btn::after {
+  content: "";
+  /* we want this pseudo element to look the same */
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 100px;
+
+  /* when you specify it as absolute, it is going to look for the first element with a relative position */
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  /* the z index defines the position of the elements if they are one on top of another */
+  /* this puts the pseudo-element behind the original button */
+  z-index: -1;
+
+  transition: all 0.4s;
+}
+
+.btn-white::after {
+  background-color: #fff;
+}
+
+/* when a user hovers over the pseudo-element, it'll increase in size (i.e. scale) */
+.btn:hover::after {
+  transform: scaleX(1.4) scaleY(1.6);
+  opacity: 0;
+}
+
+.btn-animated {
+  /* the last number is the delay on the animation */
+  animation: moveInBottom 0.5s ease-out 0.75s;
+  /* this makes it so that the button is not visible before the animation */
+  animation-fill-mode: backwards;
 }

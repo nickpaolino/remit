@@ -31,7 +31,7 @@ class Header extends React.Component {
       <div className="header">
         <div className="header-left">
           <Link className="logo" to="/">
-            Remit
+            REMIT
           </Link>
         </div>
         <div className="header-right">{this.renderContent()}</div>
