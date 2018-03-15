@@ -27,10 +27,15 @@ module.exports = app => {
   app.post("/sms", (req, res) => {
     const body = req.body.Body;
     // get command response from MongoDB and save here to send back
-    Command.findOne({ message: message[body] }).then(command => {
-      console.log(command);
+
+    // find command model for corresponding phone number
+    Command.findOne({}).then(command => {
+      if (command.message[body]) {
+        sendMessage(command.message[body]);
+      } else {
+        sendMessage("command not found");
+      }
     });
-    // sendMessage(message);
     res.send({ status: "finished" });
   });
 
