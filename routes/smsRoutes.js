@@ -2,6 +2,7 @@
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const Command = mongoose.model("commands");
 
 const keys = require("../config/keys.js");
 const client = require("twilio")(keys.accountSid, keys.authToken);
@@ -24,15 +25,20 @@ module.exports = app => {
   app.use(bodyParser.urlencoded({ extended: true }));
   // route handler for an incoming SMS message
   app.post("/sms", (req, res) => {
-    const message = req.body.Body;
+    const body = req.body.Body;
     // get command response from MongoDB and save here to send back
-    // getResponse(message)
-    sendMessage(message);
+    Command.findOne({ message: message[body] }).then(command => {
+      console.log(command);
+    });
+    // sendMessage(message);
     res.send({ status: "finished" });
   });
 
   app.post("/commands", (req, res) => {
     const body = req.body;
-    res.send({ body });
+    const message = { [body.toMessage]: body.fromMessage };
+    new Command({ message })
+      .save()
+      .then(command => res.send({ body: command }));
   });
 };
