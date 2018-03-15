@@ -27,8 +27,7 @@ module.exports = app => {
   app.post("/sms", (req, res) => {
     const body = req.body.Body;
     // get command response from MongoDB and save here to send back
-    console.log(Command);
-    console.log(Command.find({}));
+
     // find command model for corresponding phone number
     Command.findOne({ phone: "+16467913080" }).then(command => {
       console.log(command);
