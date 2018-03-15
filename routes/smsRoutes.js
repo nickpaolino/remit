@@ -24,9 +24,15 @@ module.exports = app => {
   app.use(bodyParser.urlencoded({ extended: true }));
   // route handler for an incoming SMS message
   app.post("/sms", (req, res) => {
-    // const restructuredBody = { message: req.body.Body };
     const message = req.body.Body;
+    // get command response from MongoDB and save here to send back
+    // getResponse(message)
     sendMessage(message);
     res.send({ status: "finished" });
+  });
+
+  app.post("/commands", (req, res) => {
+    const body = req.body;
+    res.send({ body });
   });
 };
