@@ -25,6 +25,7 @@ module.exports = app => {
   // route handler for an incoming SMS message
   app.post("/sms", (req, res) => {
     // const restructuredBody = { message: req.body.Body };
-    sendMessage("hello");
+    const message = req.body.Body;
+    sendMessage(message);
   });
 };
