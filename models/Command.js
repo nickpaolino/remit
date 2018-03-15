@@ -5,6 +5,7 @@ const { Schema } = mongoose;
 
 // we can add properties whenever we'd like
 const commandSchema = new Schema({
+  phone: String,
   message: {}
 });
 

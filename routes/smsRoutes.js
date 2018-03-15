@@ -29,8 +29,9 @@ module.exports = app => {
     // get command response from MongoDB and save here to send back
 
     // find command model for corresponding phone number
-    Command.find({}).then(command => {
+    Command.findOne({ phone: "+16467913080" }).then(command => {
       console.log(command);
+      console.log(body);
       if (command.message && command.message[body]) {
         sendMessage(command.message[body]);
       } else {
@@ -43,7 +44,8 @@ module.exports = app => {
   app.post("/commands", (req, res) => {
     const body = req.body;
     const message = { [body.toMessage]: body.fromMessage };
-    new Command({ message })
+    const phone = body.phone;
+    new Command({ message, phone })
       .save()
       .then(command => res.send({ body: command }));
   });
