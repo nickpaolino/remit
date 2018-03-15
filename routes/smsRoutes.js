@@ -27,6 +27,6 @@ module.exports = app => {
     // const restructuredBody = { message: req.body.Body };
     const message = req.body.Body;
     sendMessage(message);
-    res.send({ hey: "test" });
+    res.send({ status: "finished" });
   });
 };
