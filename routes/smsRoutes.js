@@ -30,6 +30,7 @@ module.exports = app => {
 
     // find command model for corresponding phone number
     Command.find({}).then(command => {
+      console.log(command);
       if (command.message && command.message[body]) {
         sendMessage(command.message[body]);
       } else {
