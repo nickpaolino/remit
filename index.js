@@ -25,6 +25,9 @@ app.use(passport.session());
 // imports the auth route handlers
 require("./routes/authRoutes")(app);
 
+// imports the sms route handlers
+require("./routes/smsRoutes")(app);
+
 // uses Heroku's port if it exists, otherwise 5000
 const PORT = process.env.PORT || 5000;
 

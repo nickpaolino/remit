@@ -32,7 +32,6 @@ p,
 input {
   color: rgba(50, 50, 120, 0.8);
   text-decoration: none;
-  /* text-transform: uppercase; */
 
   /* creates shadow effect on links */
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
@@ -83,6 +82,12 @@ input {
   top: 20%;
 }
 
+.command,
+.form {
+  height: 100%;
+  width: 100%;
+}
+
 input {
   margin-top: 10px;
   font-family: "Aldrich", sans-serif;
@@ -104,9 +109,6 @@ input::placeholder {
   font-size: 0.75em;
   text-transform: uppercase;
   text-decoration: none;
-
-  /* top right bottom left */
-  /* padding: 15px 40px 15px 40px; */
 
   /* top/bottom left/right */
   padding: 10px 30px;
