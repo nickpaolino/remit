@@ -29,8 +29,8 @@ module.exports = app => {
     // get command response from MongoDB and save here to send back
 
     // find command model for corresponding phone number
-    Command.findOne({}).then(command => {
-      if (command.message[body]) {
+    Command.find({}).then(command => {
+      if (command.message && command.message[body]) {
         sendMessage(command.message[body]);
       } else {
         sendMessage("command not found");
