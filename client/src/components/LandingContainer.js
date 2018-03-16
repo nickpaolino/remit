@@ -44,7 +44,7 @@ class LandingContainer extends Component {
     const body = {
       toMessage: this.state.toMessage,
       fromMessage: this.state.fromMessage,
-      phone: "1"
+      phone: "+16467913080"
     };
 
     fetch("https://remitt.herokuapp.com/commands", {
