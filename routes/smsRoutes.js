@@ -8,7 +8,7 @@ module.exports = app => {
   // allows the React server on port 3000 access to GET and POST on the express server
   app.use(
     cors({
-      origin: "http://localhost:3000"
+      origin: "http://localhost:3000/*"
     })
   );
 
