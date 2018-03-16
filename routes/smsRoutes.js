@@ -32,8 +32,8 @@ module.exports = app => {
     Command.find({ phone: "+16467913080" }).then(command => {
       console.log(command);
       console.log(body);
-      if (command.message && command.message[body]) {
-        sendMessage(command.message[body]);
+      if (command[0].message && command[0].message[body]) {
+        sendMessage(command[0].message[body]);
       } else {
         sendMessage("command not found");
       }
