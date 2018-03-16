@@ -27,12 +27,14 @@ module.exports = app => {
 
     console.log("Auth is:", req.body.auth);
 
-    const googleId = req.body.auth.googleId;
+    if (req.body.auth) {
+      const googleId = req.body.auth.googleId;
 
-    console.log(req.body);
-
-    // get command response from MongoDB and save here to send back
-    configure.sendResponse(body, googleId, res, isSMS);
+      // get command response from MongoDB and save here to send back
+      configure.sendResponse(body, googleId, res, isSMS);
+    } else {
+      console.log(req.body);
+    }
   });
 
   app.post("/commands", (req, res) => {
