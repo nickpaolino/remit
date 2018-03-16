@@ -25,7 +25,7 @@ const sendResponse = (body, isSMS) => {
     if (isSMS) {
       sms.sendMessage(message);
       // send a response to avoid a Heroku timeout and Twilio error
-      res.send({ status: "creating command" });
+      res.send({ status: "finished" });
     } else {
       res.send({ message });
     }
