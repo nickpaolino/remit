@@ -36,23 +36,24 @@ class LandingContainer extends Component {
   };
 
   createCommand = () => {
+    // creates the headers for the POST request
     const headers = {
       "Content-Type": "application/json",
       Accepts: "application/json"
     };
 
-    const body = {
+    // the body currently consists of the to and from message
+    const body = JSON.stringify({
       toMessage: this.state.toMessage,
       fromMessage: this.state.fromMessage
-    };
+    });
 
+    // make a post request to the db with the new command
     fetch("https://remitt.herokuapp.com/commands", {
       method: "POST",
-      body: JSON.stringify(body),
+      body,
       headers
-    })
-      .then(res => res.json())
-      .then(json => console.log(json));
+    });
   };
 
   handleChange = ({ target }) => {
