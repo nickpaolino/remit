@@ -47,7 +47,7 @@ class LandingContainer extends Component {
     const body = JSON.stringify({
       toMessage: this.state.toMessage,
       fromMessage: this.state.fromMessage,
-      user: this.props.auth
+      auth: this.props.auth
     });
 
     // make a post request to the db with the new command

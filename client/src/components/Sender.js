@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "../App.css";
 
 class Sender extends Component {
@@ -25,7 +26,8 @@ class Sender extends Component {
     // the body currently consists of the to and from message
     const body = JSON.stringify({
       Body,
-      notSMS: true
+      notSMS: true,
+      auth: this.props.auth
     });
 
     // make a post request to the db with the new command
@@ -53,4 +55,8 @@ class Sender extends Component {
   }
 }
 
-export default Sender;
+const mapStateToProps = ({ auth }) => {
+  return { auth };
+};
+
+export default connect(mapStateToProps)(Sender);

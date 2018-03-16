@@ -37,8 +37,10 @@ module.exports = app => {
     // this is the text message body
     const body = req.body;
 
+    const googleId = req.body.auth.googleId;
+
     // create a command in the Mongo database
-    configure.createCommand(body);
+    configure.createCommand(body, googleId);
 
     // send a response to avoid a Heroku timeout and Twilio error
     res.send({ status: "creating command" });
