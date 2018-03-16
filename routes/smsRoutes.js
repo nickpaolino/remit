@@ -38,8 +38,5 @@ module.exports = app => {
 
     // create a command in the Mongo database
     configure.createCommand(body);
-
-    // send a response to avoid a Heroku timeout and Twilio error
-    res.send({ status: "creating command" });
   });
 };
