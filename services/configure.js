@@ -25,6 +25,13 @@ const sendResponse = (body, googleId, res, isSMS) => {
           message = "command not found";
           // list user's commands here or something similar
         }
+        if (isSMS) {
+          sms.sendMessage(message);
+          // send a response to avoid a Heroku timeout and Twilio error
+          res.send({ status: "finished" });
+        } else {
+          res.send({ message });
+        }
       });
     } else {
       // find command model for corresponding phone number
@@ -45,14 +52,6 @@ const sendResponse = (body, googleId, res, isSMS) => {
           // list user's commands here or something similar
         }
       });
-    }
-
-    if (isSMS) {
-      sms.sendMessage(message);
-      // send a response to avoid a Heroku timeout and Twilio error
-      res.send({ status: "finished" });
-    } else {
-      res.send({ message });
     }
   });
 };
