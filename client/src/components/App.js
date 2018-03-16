@@ -6,6 +6,7 @@ import * as actions from "../actions";
 
 import Header from "./Header";
 import LandingContainer from "./LandingContainer";
+import Sender from "./Sender";
 
 class App extends React.Component {
   componentDidMount() {
@@ -19,6 +20,7 @@ class App extends React.Component {
           <div className="app">
             <Header />
             <LandingContainer />
+            <Route exact path="/sender" component={Sender} />
           </div>
         </BrowserRouter>
       </div>

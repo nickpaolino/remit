@@ -21,8 +21,12 @@ module.exports = app => {
     // this is the text message that is sent to the configured number
     const body = req.body.Body;
 
+    const isSMS = req.body.notSMS ? false : true;
+
+    console.log("isSMS is:", isSMS);
+
     // get command response from MongoDB and save here to send back
-    configure.sendResponse(body);
+    configure.sendResponse(body, isSMS);
 
     // send a response to avoid a Heroku timeout and Twilio error
     res.send({ status: "finished" });

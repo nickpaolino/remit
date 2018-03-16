@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Command = mongoose.model("commands");
 const sms = require("./sms.js");
 
-const sendResponse = body => {
+const sendResponse = (body, isSMS) => {
   // find command model for corresponding phone number
   Command.find({}).then(commands => {
     // find the corresponding response from the command in the message object
@@ -21,7 +21,12 @@ const sendResponse = body => {
       message = "command not found";
       // list user's commands here or something similar
     }
-    sms.sendMessage(message);
+
+    if (isSMS) {
+      sms.sendMessage(message);
+    } else {
+      res.send({ message });
+    }
   });
 };
 
