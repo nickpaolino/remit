@@ -23,10 +23,12 @@ module.exports = app => {
 
     const isSMS = req.body.notSMS ? false : true;
 
-    console.log("isSMS is:", isSMS);
+    console.log("is from SMS?", isSMS);
+
+    const googleId = body.auth.googleId;
 
     // get command response from MongoDB and save here to send back
-    configure.sendResponse(body, res, isSMS);
+    configure.sendResponse(body, googleId, res, isSMS);
   });
 
   app.post("/commands", (req, res) => {

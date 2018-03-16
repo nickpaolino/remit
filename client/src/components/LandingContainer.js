@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "../App.css";
 
 class LandingContainer extends Component {
@@ -45,7 +46,8 @@ class LandingContainer extends Component {
     // the body currently consists of the to and from message
     const body = JSON.stringify({
       toMessage: this.state.toMessage,
-      fromMessage: this.state.fromMessage
+      fromMessage: this.state.fromMessage,
+      user: this.props.auth
     });
 
     // make a post request to the db with the new command
@@ -114,4 +116,8 @@ class LandingContainer extends Component {
   }
 }
 
-export default LandingContainer;
+const mapStateToProps = ({ auth }) => {
+  return { auth };
+};
+
+export default connect(mapStateToProps)(LandingContainer);
