@@ -53,8 +53,10 @@ const sendResponse = (body, googleId, res, isSMS) => {
 
 const createCommand = body => {
   const message = { [body.toMessage]: body.fromMessage };
-  const phone = body.phone;
-  new Command({ message, phone }).save();
+  User.find({ googleId }).then(user => {
+    user.message[body.toMessage] = body.fromMessage;
+    user.save();
+  });
 };
 
 module.exports = {
