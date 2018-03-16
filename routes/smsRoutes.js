@@ -29,6 +29,8 @@ module.exports = app => {
 
     const googleId = req.body.auth.googleId;
 
+    console.log(req.body);
+
     // get command response from MongoDB and save here to send back
     configure.sendResponse(body, googleId, res, isSMS);
   });

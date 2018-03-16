@@ -4,8 +4,16 @@ const User = mongoose.model("users");
 const Command = mongoose.model("commands");
 const sms = require("./sms.js");
 
-const sendResponse = (body, googleId, res, isSMS) => {
-  User.findOne({ googleId: googleId }).then(user => {
+const sendResponse = (body, googleId, res, isSMS, phone) => {
+  let query;
+
+  if (googleId) {
+    query = { phone };
+  } else {
+    query = { googleId };
+  }
+
+  User.findOne(query).then(user => {
     if (user) {
       // find command model for corresponding phone number
       Command.find({ user: user._id }).then(commands => {
