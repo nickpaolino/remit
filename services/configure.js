@@ -1,6 +1,7 @@
 // this file is for all functions that require communication with the database for configuring commands
 const mongoose = require("mongoose");
 const Command = mongoose.model("commands");
+const User = mongoose.model("users");
 const sms = require("./sms.js");
 
 const sendResponse = (body, googleId, res, isSMS) => {
