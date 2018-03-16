@@ -26,7 +26,7 @@ module.exports = app => {
     console.log("isSMS is:", isSMS);
 
     // get command response from MongoDB and save here to send back
-    configure.sendResponse(body, isSMS);
+    configure.sendResponse(body, res, isSMS);
   });
 
   app.post("/commands", (req, res) => {
