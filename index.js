@@ -1,4 +1,6 @@
 const express = require("express");
+// creates the express app
+const app = express();
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
@@ -8,9 +10,6 @@ require("./models/Command");
 require("./services/passport");
 
 mongoose.connect(keys.mongoURI);
-
-// creates the express app
-const app = express();
 
 // lets the app use the cookie session with a max storage age of a month
 app.use(
