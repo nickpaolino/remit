@@ -5,7 +5,7 @@ const Command = mongoose.model("commands");
 const sms = require("./sms.js");
 
 const sendResponse = (body, googleId, res, isSMS) => {
-  User.find({ googleId: googleId }).then(user => {
+  User.findOne({ googleId: googleId }).then(user => {
     if (user) {
       // find command model for corresponding phone number
       Command.find({ user: user._id }).then(commands => {
@@ -59,7 +59,7 @@ const sendResponse = (body, googleId, res, isSMS) => {
 const createCommand = (body, googleId) => {
   const message = { [body.toMessage]: body.fromMessage };
   const phone = body.phone;
-  User.find({ googleId }).then(user => {
+  User.findOne({ googleId }).then(user => {
     if (user) {
       new Command({ message, phone, user }).save();
     } else {
