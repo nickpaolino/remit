@@ -13,8 +13,11 @@ const sendResponse = (body, googleId, res, isSMS, phone) => {
     query = { phone };
   }
 
+  console.log("Query is:", query);
+
   User.findOne(query).then(user => {
     if (user) {
+      console.log("User is:", user);
       // find command model for corresponding phone number
       Command.find({ user: user._id }).then(commands => {
         // find the corresponding response from the command in the message object
