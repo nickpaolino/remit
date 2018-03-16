@@ -24,7 +24,7 @@ module.exports = app => {
     // get command response from MongoDB and save here to send back
     configure.sendResponse(body);
 
-    // send a response to avoid a Heroku timeout
+    // send a response to avoid a Heroku timeout and Twilio error
     res.send({ status: "finished" });
   });
 
@@ -34,5 +34,8 @@ module.exports = app => {
 
     // create a command in the Mongo database
     configure.createCommand(body);
+
+    // send a response to avoid a Heroku timeout and Twilio error
+    res.send({ status: "creating command" });
   });
 };

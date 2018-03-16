@@ -22,9 +22,7 @@ const sendResponse = body => {
 const createCommand = body => {
   const message = { [body.toMessage]: body.fromMessage };
   const phone = body.phone;
-  new Command({ message, phone })
-    .save()
-    .then(command => res.send({ body: command }));
+  new Command({ message, phone }).save();
 };
 
 module.exports = {
