@@ -11,7 +11,7 @@ const sendResponse = (body, googleId, res, isSMS) => {
       Command.find({ user: user._id }).then(commands => {
         // find the corresponding response from the command in the message object
         const command = commands.find(msg => msg.message[body]);
-        console.log("Command is:", commands);
+        console.log("Command is:", command);
 
         // setup message variable for control logic
         let message;
