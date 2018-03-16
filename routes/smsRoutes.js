@@ -25,7 +25,9 @@ module.exports = app => {
 
     console.log("is from SMS?", isSMS);
 
-    const googleId = body.auth.googleId;
+    console.log("Auth is:", req.body.auth);
+
+    const googleId = req.body.auth.googleId;
 
     // get command response from MongoDB and save here to send back
     configure.sendResponse(body, googleId, res, isSMS);
