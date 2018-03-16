@@ -14,6 +14,7 @@ const sendMessage = body => {
 };
 
 const sendResponse = body => {
+  // find command model for corresponding phone number
   Command.find({}).then(commands => {
     const command = commands.find(msg => msg.message[body]);
     if (command.message && command.message[body]) {
