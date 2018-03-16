@@ -1,44 +1,26 @@
 // this file is for all functions that require communication with the database for configuring commands
 const mongoose = require("mongoose");
 const Command = mongoose.model("commands");
+const User = mongoose.model("users");
 const sms = require("./sms.js");
 
 const sendResponse = (body, googleId, res, isSMS) => {
-  User.find({ googleId: googleId }).then(user => {
-    if (user) {
-      const command = user.message[body];
+  // find command model for corresponding phone number
+  Command.find({}).then(commands => {
+    // find the corresponding response from the command in the message object
+    const command = commands.find(msg => msg.message[body]);
 
-      // setup message variable for control logic
-      let message;
+    // setup message variable for control logic
+    let message;
 
-      // if the message object exists for that command and the command is a key
-      if (user.message && user.message[body]) {
-        // then send message with command response
-        message = user.message[body];
-      } else {
-        // otherwise let the user know that the command is not found
-        message = "command not found";
-        // list user's commands here or something similar
-      }
+    // if the message object exists for that command and the command is a key
+    if (command.message && command.message[body]) {
+      // then send message with command response
+      message = command.message[body];
     } else {
-      // find command model for corresponding phone number
-      Command.find({}).then(commands => {
-        // find the corresponding response from the command in the message object
-        const command = commands.find(msg => msg.message[body]);
-
-        // setup message variable for control logic
-        let message;
-
-        // if the message object exists for that command and the command is a key
-        if (command.message && command.message[body]) {
-          // then send message with command response
-          message = command.message[body];
-        } else {
-          // otherwise let the user know that the command is not found
-          message = "command not found";
-          // list user's commands here or something similar
-        }
-      });
+      // otherwise let the user know that the command is not found
+      message = "command not found";
+      // list user's commands here or something similar
     }
 
     if (isSMS) {
@@ -51,10 +33,10 @@ const sendResponse = (body, googleId, res, isSMS) => {
   });
 };
 
-const createCommand = body => {
+const createCommand = (body, googleId) => {
   const message = { [body.toMessage]: body.fromMessage };
   const phone = body.phone;
-  new Command({ message, phone }).save();
+  new Command({ message, phone, googleId }).save();
 };
 
 module.exports = {
