@@ -8,9 +8,9 @@ const sendResponse = (body, googleId, res, isSMS, phone) => {
   let query;
 
   if (googleId) {
-    query = { phone };
-  } else {
     query = { googleId };
+  } else {
+    query = { phone };
   }
 
   User.findOne(query).then(user => {

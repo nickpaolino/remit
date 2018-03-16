@@ -33,7 +33,8 @@ module.exports = app => {
       // get command response from MongoDB and save here to send back
       configure.sendResponse(body, googleId, res, isSMS);
     } else {
-      console.log(req.body);
+      const phone = req.body.From;
+      configure.sendResponse(body, null, res, isSMS, phone);
     }
   });
 
