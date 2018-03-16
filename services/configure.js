@@ -53,7 +53,6 @@ const sendResponse = (body, googleId, res, isSMS) => {
 };
 
 const createCommand = (body, googleId) => {
-  const message = { [body.toMessage]: body.fromMessage };
   User.find({ googleId }).then(user => {
     user.message[body.toMessage] = body.fromMessage;
     user.save();
