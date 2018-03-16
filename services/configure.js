@@ -1,7 +1,6 @@
 // this file is for all functions that require communication with the database for configuring commands
 const mongoose = require("mongoose");
 const Command = mongoose.model("commands");
-const User = mongoose.model("users");
 const sms = require("./sms.js");
 
 const sendResponse = (body, googleId, res, isSMS) => {
@@ -52,11 +51,10 @@ const sendResponse = (body, googleId, res, isSMS) => {
   });
 };
 
-const createCommand = (body, googleId) => {
-  User.find({ googleId }).then(user => {
-    user.message[body.toMessage] = body.fromMessage;
-    user.save();
-  });
+const createCommand = body => {
+  const message = { [body.toMessage]: body.fromMessage };
+  const phone = body.phone;
+  new Command({ message, phone }).save();
 };
 
 module.exports = {
