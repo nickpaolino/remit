@@ -7,7 +7,8 @@ const { Schema } = mongoose;
 const commandSchema = new Schema({
   phone: String,
   message: {},
-  user: { type: Schema.Types.ObjectId, ref: "User" }
+  user: { type: Schema.Types.ObjectId, ref: "User" },
+  notLoggedIn: Boolean
 });
 
 // telling mongoose to create a new collection with the above schema

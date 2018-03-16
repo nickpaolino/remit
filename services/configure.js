@@ -46,7 +46,7 @@ const sendResponse = (body, googleId, res, isSMS, phone) => {
       });
     } else {
       // find command model for corresponding phone number
-      Command.find({}).then(commands => {
+      Command.find({ notLoggedIn: true }).then(commands => {
         // find the corresponding response from the command in the message object
         const command = commands.find(msg => msg.message[body]);
 
@@ -74,7 +74,7 @@ const createCommand = (body, googleId) => {
     if (user) {
       new Command({ message, phone, user }).save();
     } else {
-      new Command({ message, phone }).save();
+      new Command({ message, phone, notLoggedIn: true }).save();
     }
   });
 };
