@@ -47,7 +47,7 @@ class LandingContainer extends Component {
       phone: "1"
     };
 
-    fetch("http://localhost:5000/commands", {
+    fetch("https://remitt.herokuapp.com/commands", {
       method: "POST",
       body: JSON.stringify(body),
       headers
