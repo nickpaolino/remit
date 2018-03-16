@@ -8,14 +8,20 @@ const sendResponse = body => {
   Command.find({}).then(commands => {
     // find the corresponding response from the command in the message object
     const command = commands.find(msg => msg.message[body]);
+
+    // setup message variable for control logic
+    let message;
+
     // if the message object exists for that command and the command is a key
     if (command.message && command.message[body]) {
       // then send message with command response
-      sms.sendMessage(command.message[body]);
+      message = command.message[body];
     } else {
       // otherwise let the user know that the command is not found
-      sms.sendMessage("command not found");
+      message = "command not found";
+      // list user's commands here or something similar
     }
+    sms.sendMessage(message);
   });
 };
 
