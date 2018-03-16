@@ -44,7 +44,7 @@ class LandingContainer extends Component {
     const body = {
       toMessage: this.state.toMessage,
       fromMessage: this.state.fromMessage,
-      phone: "+16467913080"
+      phone: "1"
     };
 
     fetch("http://localhost:5000/commands", {
